@@ -37,7 +37,14 @@ export function Navbar() {
       )}
       <Container className="relative z-10 flex h-20 items-center justify-between sm:h-24">
         <Link href="/" aria-label={site.name}>
-          <Logo />
+          <Logo
+            className={cn(
+              "rounded-xl px-2 py-1 transition-all duration-300",
+              scrolled
+                ? "bg-transparent"
+                : "border border-white/25 bg-white/90 shadow-[0_10px_30px_-16px_rgba(0,0,0,0.75)] ring-1 ring-black/10 backdrop-blur-md"
+            )}
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
