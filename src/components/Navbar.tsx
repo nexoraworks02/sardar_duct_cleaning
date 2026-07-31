@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
-import { Button } from "./ui/Button";
 import { Container } from "./ui/Container";
 import { nav, site } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -27,38 +26,27 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-white/95 backdrop-blur-xl border-b-2 border-teal-100 shadow-[0_10px_30px_-14px_rgba(20,40,80,0.35)]"
-          : "bg-transparent"
+          ? "border-b border-white/10 bg-[#020712]/90 shadow-[0_18px_48px_-28px_rgba(0,0,0,0.95)] backdrop-blur-xl"
+          : "bg-gradient-to-b from-black/95 via-[#020712]/78 to-transparent shadow-[0_30px_80px_-34px_rgba(0,0,0,0.98)]"
       )}
     >
-      {/* Dark scrim so the nav stays readable over the dark hero photo */}
-      {!scrolled && (
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
-      )}
-      <Container className="relative z-10 flex h-20 items-center justify-between sm:h-24">
+      <Container className="relative z-10 flex h-20 max-w-7xl items-center justify-between sm:h-28">
         <Link href="/" aria-label={site.name}>
-          <Logo
-            className={cn(
-              "rounded-xl px-2 py-1 transition-all duration-300",
-              scrolled
-                ? "bg-transparent"
-                : "border border-white/25 bg-white/90 shadow-[0_10px_30px_-16px_rgba(0,0,0,0.75)] ring-1 ring-black/10 backdrop-blur-md"
-            )}
-          />
+          <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-9">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={cn(
-                "group relative text-xs font-bold uppercase tracking-[0.14em] transition-colors",
-                scrolled ? "text-ink hover:text-teal-600" : "text-white/85 hover:text-white"
-              )}
+              className="group relative inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-extrabold uppercase tracking-normal text-white/90 transition-colors hover:text-white"
             >
               {item.label}
-              <span className="absolute -bottom-1.5 left-0 h-0.5 w-0 bg-teal-500 transition-all duration-300 group-hover:w-full" />
+              {item.label === "Services" && (
+                <ChevronDown className="h-4 w-4 text-[#7bb7ff]" />
+              )}
+              <span className="absolute -bottom-2 left-0 h-0.5 w-0 bg-[#1E73E8] shadow-[0_0_10px_rgba(30,115,232,0.75)] transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </nav>
@@ -66,23 +54,25 @@ export function Navbar() {
         <div className="hidden items-center gap-4 lg:flex">
           <a
             href={tel}
-            className={cn(
-              "flex items-center gap-2 text-sm font-bold transition-colors",
-              scrolled ? "text-teal-700 hover:text-teal-500" : "text-white hover:text-teal-200"
-            )}
+            className="flex items-center gap-2 whitespace-nowrap text-base font-extrabold text-white transition-colors hover:text-[#9ec8ff]"
           >
-            <Phone className="h-4 w-4" />
+            <Phone className="h-5 w-5 text-[#9ec8ff]" />
             {site.defaultPhone}
           </a>
-          <Button href="/#quote" size="sm">
+          <Link
+            href="/#quote"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-gradient-to-r from-[#0A47A9] to-[#1E73E8] px-5 py-3.5 font-display text-base font-extrabold text-white shadow-[0_16px_34px_-18px_rgba(30,115,232,0.95)] transition-all duration-200 hover:brightness-110"
+          >
             Get a Free Quote
-          </Button>
+            <ChevronRight className="h-5 w-5" />
+          </Link>
         </div>
 
         <button
-          className={cn("p-2 lg:hidden", scrolled ? "text-ink" : "text-white")}
+          className="p-2 text-white lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -90,29 +80,33 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden bg-white border-b-2 border-teal-100 shadow-lg">
+        <div className="border-t border-white/10 bg-[#061321]/95 shadow-[0_22px_55px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-bold uppercase tracking-wide text-ink hover:bg-teal-50"
+                className="rounded-lg px-3 py-3 text-sm font-bold uppercase tracking-wide text-white/85 hover:bg-white/10 hover:text-white"
               >
                 {item.label}
               </Link>
             ))}
             <a
               href={tel}
-              className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-bold text-teal-700"
+              className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-bold text-white"
             >
               <Phone className="h-4 w-4" />
               {site.defaultPhone}
             </a>
             <div onClick={() => setOpen(false)}>
-              <Button href="/#quote" className="mt-2 w-full">
+              <Link
+                href="/#quote"
+                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#0A47A9] to-[#1E73E8] px-6 py-4 font-display font-extrabold text-white"
+              >
                 Get a Free Quote
-              </Button>
+                <ChevronRight className="h-5 w-5" />
+              </Link>
             </div>
           </Container>
         </div>

@@ -42,7 +42,7 @@ export const site = {
   //   3. Check that inbox for the Access Key, then paste it between the quotes.
   // Until a valid key is set, the booking form shows an error on submit
   // (it never silently "succeeds").
-  web3formsAccessKey: "", // TODO: Web3Forms access key
+  web3formsAccessKey: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "",
 } as const;
 
 export type Service = {
