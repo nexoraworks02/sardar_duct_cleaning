@@ -24,8 +24,9 @@ export const site = {
 
   // --- Meta Ads tracking ---
   // Meta Pixel / Dataset ID for browser-side Pixel tracking (Events Manager).
-  // While empty, the Pixel simply doesn't load (no errors). Never use a fake id.
-  metaPixelId: "",
+  // Set NEXT_PUBLIC_META_PIXEL_ID in your environment. While empty, the Pixel
+  // simply doesn't load (no errors). Never use a fake id.
+  metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "",
 
   // --- Google Analytics 4 ---
   // GA4 Measurement ID (analytics.google.com → Admin → Data streams).

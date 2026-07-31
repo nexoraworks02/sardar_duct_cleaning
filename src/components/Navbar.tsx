@@ -31,7 +31,7 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      {/* Dark scrim so the logo/nav stay readable over the dark hero photo */}
+      {/* Dark scrim so the nav stays readable over the dark hero photo */}
       {!scrolled && (
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
       )}
@@ -47,9 +47,7 @@ export function Navbar() {
               href={item.href}
               className={cn(
                 "group relative text-xs font-bold uppercase tracking-[0.14em] transition-colors",
-                scrolled
-                  ? "text-ink hover:text-teal-600"
-                  : "text-white/85 hover:text-white"
+                scrolled ? "text-ink hover:text-teal-600" : "text-white/85 hover:text-white"
               )}
             >
               {item.label}
@@ -75,7 +73,7 @@ export function Navbar() {
         </div>
 
         <button
-          className={cn("lg:hidden p-2", scrolled ? "text-ink" : "text-white")}
+          className={cn("p-2 lg:hidden", scrolled ? "text-ink" : "text-white")}
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
