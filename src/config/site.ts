@@ -19,8 +19,8 @@ export const site = {
   defaultPhone: "(437) 529-2329",
 
   // --- Social / marketing (leave "" to hide the icon until provided) ---
-  facebookUrl: "", // TODO: client Facebook URL
-  instagramUrl: "", // TODO: client Instagram URL
+  facebookUrl: "https://www.facebook.com/share/1DqNXX6NYR/",
+  instagramUrl: "https://www.instagram.com/sardarductcleaning",
 
   // --- Meta Ads tracking ---
   // Meta Pixel / Dataset ID for browser-side Pixel tracking (Events Manager).
