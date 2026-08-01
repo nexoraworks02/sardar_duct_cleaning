@@ -24,6 +24,17 @@ Set `NEXT_PUBLIC_META_PIXEL_ID` to your Meta Pixel / Dataset ID to enable browse
 
 Set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` to your Web3Forms access key to send booking form submissions to email. When it is empty, form submissions will fail instead of silently succeeding.
 
+Set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` to the content value from Google Search Console's HTML tag method to verify the domain.
+
+## SEO
+
+The production canonical domain is `https://sardarductcleaning.com`.
+
+After deploying, submit these URLs in Google Search Console:
+
+- `https://sardarductcleaning.com`
+- `https://sardarductcleaning.com/sitemap.xml`
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

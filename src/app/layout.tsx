@@ -23,7 +23,7 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const siteUrl = "https://sardarductcleaning.ca";
+const siteUrl = site.url;
 
 export const metadata: Metadata = {
   title: {
@@ -33,6 +33,25 @@ export const metadata: Metadata = {
   description: site.description,
   metadataBase: new URL(siteUrl),
   alternates: { canonical: "/" },
+  keywords: [
+    "air duct cleaning Canada",
+    "duct cleaning near me",
+    "dryer vent cleaning",
+    "furnace cleaning",
+    "HVAC cleaning",
+    "Sardar Duct Cleaning",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     url: siteUrl,
@@ -46,6 +65,9 @@ export const metadata: Metadata = {
     title: `Air Duct Cleaning Canada | ${site.name}`,
     description: site.description,
   },
+  verification: site.googleSiteVerification
+    ? { google: site.googleSiteVerification }
+    : undefined,
 };
 
 const jsonLd = {
@@ -58,6 +80,7 @@ const jsonLd = {
   email: site.email,
   priceRange: "$$",
   image: `${siteUrl}/opengraph-image`,
+  sameAs: [site.facebookUrl, site.instagramUrl].filter(Boolean),
   areaServed: [
     ...[
       "Ontario",
@@ -79,7 +102,6 @@ const jsonLd = {
     "@type": "Offer",
     itemOffered: { "@type": "Service", name },
   })),
-  sameAs: [site.facebookUrl, site.instagramUrl],
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: site.googleRating,

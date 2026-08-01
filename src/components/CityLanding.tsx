@@ -46,7 +46,7 @@ export function CityLanding({ page }: { page: CityPage }) {
       name: site.name,
       telephone: site.defaultPhone,
       email: site.email,
-      url: "https://sardarductcleaning.ca",
+      url: site.url,
     },
     areaServed: { "@type": "City", name: `${page.city}, ${page.provinceName}` },
     description: page.metaDescription,

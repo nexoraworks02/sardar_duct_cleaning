@@ -37,7 +37,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
       name: site.name,
       telephone: site.defaultPhone,
       email: site.email,
-      url: "https://sardarductcleaning.ca",
+      url: site.url,
     },
     areaServed: { "@type": "State", name: page.name },
     description: page.metaDescription,

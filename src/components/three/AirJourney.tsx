@@ -106,15 +106,31 @@ function VideoHero({ enableVideo }: { enableVideo: boolean }) {
   useEffect(() => {
     if (enableVideo) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const section = sectionRef.current;
     let raf = 0;
     let start = 0;
+    let visible = true;
     const loop = (t: number) => {
-      if (!start) start = t;
-      progress.set(((t - start) / 15000) % 1); // 15s loop
+      if (visible && !document.hidden) {
+        if (!start) start = t;
+        progress.set(((t - start) / 15000) % 1); // 15s loop
+      }
       raf = requestAnimationFrame(loop);
     };
+    const io =
+      section &&
+      new IntersectionObserver(
+        ([entry]) => {
+          visible = entry.isIntersecting;
+        },
+        { threshold: 0.05 }
+      );
+    if (section && io) io.observe(section);
     raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      io?.disconnect();
+    };
   }, [enableVideo, progress]);
 
   return (

@@ -75,6 +75,7 @@ export function QuoteCalculator() {
   const [step, setStep] = useState<Step>("form");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const submittingRef = useRef(false);
   // Honeypot anti-spam: real users never see or fill this hidden field; bots do.
   const honeypot = useRef<HTMLInputElement>(null);
 
@@ -132,9 +133,12 @@ export function QuoteCalculator() {
   async function submitBooking(e: React.FormEvent) {
     e.preventDefault();
 
+    if (submittingRef.current) return;
+
     // Honeypot tripped → it's a bot. Abort silently: no success, no error.
     if (honeypot.current?.value) return;
 
+    submittingRef.current = true;
     setSubmitting(true);
     setError(null);
 
@@ -176,6 +180,7 @@ export function QuoteCalculator() {
         "Sorry — we couldn't send your booking just now. Please try again, or message us on WhatsApp below."
       );
     } finally {
+      submittingRef.current = false;
       setSubmitting(false);
     }
   }

@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
+import { site } from "@/config/site";
 import { serviceDetails } from "@/config/services";
 import { cityPages, cityPath } from "@/config/cities";
 import { provincePages } from "@/config/service-areas";
 
-const siteUrl = "https://sardarductcleaning.ca";
+const siteUrl = site.url;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { site } from "@/config/site";
 
-const siteUrl = "https://sardarductcleaning.ca";
+const siteUrl = site.url;
 
 export default function robots(): MetadataRoute.Robots {
   return {
