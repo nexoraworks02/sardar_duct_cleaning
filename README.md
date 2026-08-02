@@ -22,7 +22,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 Set `NEXT_PUBLIC_META_PIXEL_ID` to your Meta Pixel / Dataset ID to enable browser-side Meta Pixel tracking. When it is empty, the Pixel does not load.
 
-Set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` to your Web3Forms access key to send booking form submissions to email. When it is empty, form submissions will fail instead of silently succeeding.
+Set `WEB3FORMS_ACCESS_KEY` in Vercel to your Web3Forms access key to send booking form submissions to email. `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` is still supported as a fallback for older deployments, but the server-side key is preferred.
 
 Set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` to the content value from Google Search Console's HTML tag method to verify the domain.
 

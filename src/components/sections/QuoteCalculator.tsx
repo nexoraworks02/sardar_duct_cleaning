@@ -145,32 +145,30 @@ export function QuoteCalculator() {
     try {
       // Email the booking to the business via Web3Forms (free, no backend).
       // Success is shown ONLY when Web3Forms confirms delivery.
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          access_key: site.web3formsAccessKey,
           // Web3Forms built-in honeypot: must stay empty. If a bot fills it,
           // Web3Forms rejects the submission server-side (2nd anti-spam layer).
-          botcheck: "",
+          botcheck: honeypot.current?.value ?? "",
           subject: `New Booking — ${form.firstName} ($${total})`,
-          from_name: "Sardar Duct Cleaning Website",
-          first_name: form.firstName,
+          firstName: form.firstName,
           address: form.address,
           province: selectedProvince.name,
           phone: form.phone,
           // "email" is special in Web3Forms: it becomes the reply-to address.
           email: form.email,
-          customer_message: form.message || "None",
-          preferred_date: formatDate(form.date),
-          preferred_time: formatTime(form.time),
-          package: `Basic Package ($${basePrice})`,
+          message: form.message || "None",
+          preferredDate: formatDate(form.date),
+          preferredTime: formatTime(form.time),
+          packageName: `Basic Package ($${basePrice})`,
           addons: selectedAddons.map((a) => a.label).join(", ") || "None",
           total: `$${total}`,
         }),
       });
-      const data = await res.json().catch(() => ({ success: false }));
-      if (!res.ok || !data.success) throw new Error("submit-failed");
+      const data = await res.json().catch(() => ({ ok: false }));
+      if (!res.ok || !data.ok) throw new Error(data.error || "submit-failed");
 
       // Only on confirmed delivery: track the lead + show success.
       trackMeta("Lead", { value: total, currency: "CAD" });

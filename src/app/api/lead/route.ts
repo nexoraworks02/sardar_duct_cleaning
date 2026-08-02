@@ -1,27 +1,92 @@
 import { NextResponse } from "next/server";
 
-// Lead intake endpoint.
-// For now it validates + logs the lead. In Phase 10 we swap the console.log
-// for a Firestore write (collection: "leads") — the contract stays the same.
+const web3formsAccessKey =
+  process.env.WEB3FORMS_ACCESS_KEY ??
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ??
+  "";
+
+type BookingRequest = {
+  firstName?: string;
+  address?: string;
+  province?: string;
+  phone?: string;
+  email?: string;
+  message?: string;
+  preferredDate?: string;
+  preferredTime?: string;
+  packageName?: string;
+  addons?: string;
+  total?: string;
+  botcheck?: string;
+};
+
 export async function POST(req: Request) {
   try {
-    const data = await req.json();
+    const data = (await req.json()) as BookingRequest;
 
-    if (!data?.name || !data?.phone || !data?.email) {
+    if (data.botcheck) {
+      return NextResponse.json({ ok: true });
+    }
+
+    if (
+      !data.firstName ||
+      !data.address ||
+      !data.phone ||
+      !data.email ||
+      !data.preferredDate ||
+      !data.preferredTime
+    ) {
       return NextResponse.json(
         { ok: false, error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    const lead = {
-      ...data,
-      createdAt: new Date().toISOString(),
-      source: "quote-calculator",
-    };
+    if (!web3formsAccessKey) {
+      return NextResponse.json(
+        { ok: false, error: "Booking email is not configured" },
+        { status: 500 }
+      );
+    }
 
-    // TODO(Phase 10): persist to Firestore.
-    console.log("[LEAD]", JSON.stringify(lead));
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: web3formsAccessKey,
+        botcheck: "",
+        subject: `New Booking - ${data.firstName} (${data.total ?? "Quote"})`,
+        from_name: "Sardar Duct Cleaning Website",
+        first_name: data.firstName,
+        address: data.address,
+        province: data.province,
+        phone: data.phone,
+        email: data.email,
+        customer_message: data.message || "None",
+        preferred_date: data.preferredDate,
+        preferred_time: data.preferredTime,
+        package: data.packageName,
+        addons: data.addons || "None",
+        total: data.total,
+        source: "quote-calculator",
+      }),
+    });
+
+    const result = await res.json().catch(() => ({ success: false }));
+
+    if (!res.ok || !result.success) {
+      console.error("[WEB3FORMS_ERROR]", {
+        status: res.status,
+        message: result.message ?? "Unknown Web3Forms error",
+      });
+      return NextResponse.json(
+        { ok: false, error: "Booking email could not be sent" },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json({ ok: true });
   } catch {
