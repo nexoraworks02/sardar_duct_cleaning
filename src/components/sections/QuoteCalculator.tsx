@@ -35,11 +35,11 @@ const PACKAGE_INCLUDES = [
 
 type Addon = { id: string; label: string; price: number };
 const ADDONS: Addon[] = [
-  { id: "furnace", label: "Furnace Cleaning", price: 50 },
-  { id: "ac", label: "AC Cleaning", price: 50 },
-  { id: "dryer", label: "Dryer Vent Cleaning", price: 10 },
-  { id: "filter", label: "Filter Change", price: 30 },
-  { id: "brush", label: "Brush Cleaning", price: 80 },
+  { id: "furnace", label: "Furnace Cleaning", price: 100 },
+  { id: "ac", label: "AC Cleaning", price: 100 },
+  { id: "dryer", label: "Dryer Vent Cleaning", price: 50 },
+  { id: "filter", label: "Filter Change", price: 50 },
+  { id: "brush", label: "Brush Cleaning", price: 150 },
 ];
 
 type Step = "form" | "done";

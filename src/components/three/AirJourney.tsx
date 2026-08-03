@@ -178,7 +178,7 @@ function VideoHero({ enableVideo }: { enableVideo: boolean }) {
 
         <p className="mt-5 max-w-xl text-lg font-medium text-slate-200">
           Certified air-duct, furnace &amp; dryer-vent cleaning across Canada —
-          from <span className="font-bold text-white">$99</span>. Watch years of
+          from <span className="font-bold text-white">$149</span>. Watch years of
           dust disappear.
         </p>
 

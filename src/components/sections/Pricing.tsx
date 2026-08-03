@@ -17,11 +17,11 @@ const included = [
 ];
 
 const addons = [
-  { label: "Furnace Cleaning", price: 50 },
-  { label: "AC Cleaning", price: 50 },
-  { label: "Dryer Vent Cleaning", price: 10 },
-  { label: "Filter Change", price: 30 },
-  { label: "Brush Cleaning", price: 80 },
+  { label: "Furnace Cleaning", price: 100 },
+  { label: "AC Cleaning", price: 100 },
+  { label: "Dryer Vent Cleaning", price: 50 },
+  { label: "Filter Change", price: 50 },
+  { label: "Brush Cleaning", price: 150 },
 ];
 
 export function Pricing() {

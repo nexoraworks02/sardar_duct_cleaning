@@ -30,8 +30,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Air Duct Cleaning",
     headline: "Professional Air Duct Cleaning",
     short: "Remove dust, allergens & debris from your entire duct system.",
-    priceNote: "Basic Package — $99 taxes included",
-    priceValue: "$99",
+    priceNote: "Ontario Basic Package - $149 taxes included",
+    priceValue: "$149",
     intro: "Eliminate years of dust, lint, and built-up allergens from your home's air duct system to restore fresh airflow.",
     whyItMatters: "Over time, your home's ductwork accumulates dust, pet dander, mold spores, and construction debris. When your furnace or AC runs, these particles circulate throughout your living spaces. Clean ducts promote a healthier indoor environment, reduce allergy triggers, and help your HVAC system run more efficiently.",
     whatIsIncluded: [
@@ -85,8 +85,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Furnace Cleaning",
     headline: "Professional Furnace Cleaning",
     short: "Keep your heating system clean, safe and efficient all winter.",
-    priceNote: "Furnace Cleaning add-on — $50",
-    priceValue: "$50",
+    priceNote: "Furnace Cleaning add-on - $100",
+    priceValue: "$100",
     intro: "Keep your heating system running safely and efficiently all winter with a deep clean of the furnace components.",
     whyItMatters: "A dirty furnace works harder to heat your home, driving up utility bills and accelerating wear on internal components. Dust buildup on the heat exchanger or blower motor can also create safety hazards or lead to premature system failure. Professional cleaning maximizes efficiency and extends your heating system's life.",
     whatIsIncluded: [
@@ -125,7 +125,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         question: "Can I add this to my duct cleaning package?",
-        answer: "Yes! Furnace cleaning is a popular $50 add-on that can be performed at the same time as your air duct cleaning. It can be added during booking or quoted/confirmed by your technician."
+        answer: "Yes! Furnace cleaning is a popular $100 add-on that can be performed at the same time as your air duct cleaning. It can be added during booking or quoted/confirmed by your technician."
       },
       {
         question: "How often does my furnace need cleaning?",
@@ -140,8 +140,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "AC Cleaning",
     headline: "Professional Air Conditioner Cleaning",
     short: "Improve cooling performance and indoor air quality.",
-    priceNote: "AC Cleaning add-on — $50",
-    priceValue: "$50",
+    priceNote: "AC Cleaning add-on - $100",
+    priceValue: "$100",
     intro: "Boost cooling efficiency, lower your energy bills, and enjoy fresher air with our professional AC unit deep clean.",
     whyItMatters: "Dust and dirt act as thermal insulators on AC evaporator coils, forcing your system to run longer and work harder to cool the home. Clogged condensation drains can overflow, causing water damage. Cleaning ensures optimal heat transfer, improves humidity removal, and keeps your indoor air smelling fresh.",
     whatIsIncluded: [
@@ -195,8 +195,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Dryer Vent Cleaning",
     headline: "Dryer Vent Cleaning",
     short: "Prevent fire hazards and help your dryer run efficiently.",
-    priceNote: "Dryer Vent Cleaning add-on — $10",
-    priceValue: "$10",
+    priceNote: "Dryer Vent Cleaning add-on - $50",
+    priceValue: "$50",
     intro: "Prevent house fires, shorten drying times, and extend the lifespan of your dryer with our low-cost vent clearing.",
     whyItMatters: "Clogged dryer vents are one of the leading causes of residential house fires in North America. When lint blocks the exhaust pipe, heat and moisture build up, creating a fire hazard and forcing the dryer to run longer. Cleaning your dryer vent saves energy, protects your home, and stops your clothes from taking multiple cycles to dry.",
     whatIsIncluded: [
@@ -230,8 +230,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         answer: "Warning signs include clothes taking longer than one cycle to dry, the dryer getting unusually hot, or a musty smell on your laundry."
       },
       {
-        question: "Is dryer vent cleaning really only $10?",
-        answer: "Yes! When booked alongside our duct cleaning services, we offer dryer vent clearing as a super-affordable $10 add-on. It can also be quoted/confirmed by your technician."
+        question: "Is dryer vent cleaning really only $50?",
+        answer: "Yes! When booked alongside our duct cleaning services, we offer dryer vent clearing as a $50 add-on. It can also be quoted/confirmed by your technician."
       },
       {
         question: "How does it prevent fires?",
@@ -243,15 +243,15 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       }
     ],
     metaTitle: "Dryer Vent Cleaning Canada | Sardar Duct Cleaning",
-    metaDescription: "Dryer vent cleaning across Canada from $10 as an add-on. Prevent fire hazards, decrease laundry drying times, and improve dryer longevity. Book with duct cleaning today."
+    metaDescription: "Dryer vent cleaning across Canada from $50 as an add-on. Prevent fire hazards, decrease laundry drying times, and improve dryer longevity. Book with duct cleaning today."
   },
   "filter-change": {
     slug: "filter-change",
     name: "Filter Change",
     headline: "Professional Filter Change",
     short: "Replace clogged filters to ensure fresh, clean air circulation.",
-    priceNote: "Filter Change add-on — $40",
-    priceValue: "$40",
+    priceNote: "Filter Change add-on - $50",
+    priceValue: "$50",
     intro: "Ensure optimal indoor air quality and protect your HVAC system with a high-performance replacement filter.",
     whyItMatters: "The furnace filter is the primary line of defense protecting your heating and cooling equipment from dust buildup, while also trapping airborne particles. A clogged filter restricts airflow, causing the system to overheat or freeze, and allows dust to bypass the filter and settle inside your ductwork. Regularly replacing it is crucial for air hygiene.",
     whatIsIncluded: [
@@ -290,7 +290,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         question: "Does the technician provide the new filter?",
-        answer: "Yes, our $40 service includes a standard high-quality replacement filter provided by the technician during the visit."
+        answer: "Yes, our $50 service includes a standard high-quality replacement filter provided by the technician during the visit."
       },
       {
         question: "What happens if I don't change my filter?",

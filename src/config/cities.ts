@@ -34,14 +34,14 @@ export const cityPages: CityPage[] = [
     provinceName: "Ontario",
     metaTitle: "Air Duct Cleaning Ottawa | Sardar Duct Cleaning",
     metaDescription:
-      "Professional air duct cleaning in Ottawa. Fast response across Kanata, Barrhaven, Orleans & Nepean from $99. Book your free quote today.",
+      "Professional air duct cleaning in Ottawa. Fast response across Kanata, Barrhaven, Orleans & Nepean from $149. Book your free quote today.",
     h1: "Air Duct Cleaning Services in Ottawa",
     intro:
       "From Barrhaven family homes to Kanata tech-corridor builds and Orleans bungalows, we've cleaned duct systems across the capital. Ottawa's long heating season works furnaces hard — five-plus months of heating a year pushes a lot of air and dust through your ducts, so a clean system keeps things efficient when you need it most.",
     localPoints: [
       {
         title: "Local team, fastest booking",
-        text: "Across Ottawa and the National Capital Region we offer flexible scheduling — often within days — and our Ontario pricing is just $99.",
+        text: "Across Ottawa and the National Capital Region we offer flexible scheduling — often within days — and our Ontario pricing is just $149.",
       },
       {
         title: "Built for Ottawa winters",
@@ -71,7 +71,7 @@ export const cityPages: CityPage[] = [
       {
         question: "What does duct cleaning cost in Ottawa?",
         answer:
-          "Our Ontario Basic Package starts at $99 taxes included — a full duct and vent cleaning with sanitizer and inspections. Optional add-ons like furnace or dryer vent cleaning can be added during booking.",
+          "Our Ontario Basic Package starts at $149 taxes included — a full duct and vent cleaning with sanitizer and inspections. Optional add-ons like furnace or dryer vent cleaning can be added during booking.",
       },
     ],
   },

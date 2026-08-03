@@ -24,10 +24,10 @@ export const provincePages: ProvincePage[] = [
     name: "Ontario",
     metaTitle: "Air Duct Cleaning Ontario | Sardar Duct Cleaning",
     metaDescription:
-      "Professional air duct cleaning across Ontario from $99. Ottawa, Toronto, Mississauga, Brampton, Hamilton and beyond. Certified technicians, free quotes.",
+      "Professional air duct cleaning across Ontario from $149. Ottawa, Toronto, Mississauga, Brampton, Hamilton and beyond. Certified technicians, free quotes.",
     h1: "Air Duct Cleaning Services in Ontario",
     intro:
-      "Ontario is Sardar Duct Cleaning's home province — our team is based in the Greater Toronto Area, and we serve homes from across the GTA to Ottawa, Hamilton, London and beyond. Ontario's mix of century homes, post-war suburbs, and brand-new subdivisions means every duct system is different; our certified technicians clean them all, with before-and-after photos and our lowest pricing in Canada, starting at just $99.",
+      "Ontario is Sardar Duct Cleaning's home province — our team is based in the Greater Toronto Area, and we serve homes from across the GTA to Ottawa, Hamilton, London and beyond. Ontario's mix of century homes, post-war suburbs, and brand-new subdivisions means every duct system is different; our certified technicians clean them all, with before-and-after photos and our lowest pricing in Canada, starting at just $149.",
     needs: [
       {
         title: "Long heating seasons",
@@ -57,7 +57,7 @@ export const provincePages: ProvincePage[] = [
       {
         question: "How much does duct cleaning cost in Ontario?",
         answer:
-          "Our Ontario Basic Package is $99 taxes included — the lowest price of any province we serve, because Ontario is our home province. It covers unlimited duct and vent cleaning, natural sanitizer, and free furnace, AC, and dryer vent inspections.",
+          "Our Ontario Basic Package is $149 taxes included — the lowest price of any province we serve, because Ontario is our home province. It covers unlimited duct and vent cleaning, natural sanitizer, and free furnace, AC, and dryer vent inspections.",
       },
       {
         question: "Which Ontario cities do you serve?",

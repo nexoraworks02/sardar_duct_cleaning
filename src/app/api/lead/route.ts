@@ -43,8 +43,12 @@ export async function POST(req: Request) {
     }
 
     if (!web3formsAccessKey) {
+      console.error("[WEB3FORMS_CONFIG_MISSING]", {
+        hasServerKey: Boolean(process.env.WEB3FORMS_ACCESS_KEY),
+        hasPublicFallback: Boolean(process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY),
+      });
       return NextResponse.json(
-        { ok: false, error: "Booking email is not configured" },
+        { ok: false, error: "Booking email is not configured", code: "missing_access_key" },
         { status: 500 }
       );
     }
@@ -83,15 +87,16 @@ export async function POST(req: Request) {
         message: result.message ?? "Unknown Web3Forms error",
       });
       return NextResponse.json(
-        { ok: false, error: "Booking email could not be sent" },
+        { ok: false, error: "Booking email could not be sent", code: "web3forms_rejected" },
         { status: 502 }
       );
     }
 
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (error) {
+    console.error("[LEAD_ROUTE_ERROR]", error);
     return NextResponse.json(
-      { ok: false, error: "Invalid request" },
+      { ok: false, error: "Invalid request", code: "invalid_request" },
       { status: 400 }
     );
   }

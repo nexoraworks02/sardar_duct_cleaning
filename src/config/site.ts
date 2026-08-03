@@ -107,9 +107,9 @@ export type Province = {
 
 // Provinces served (6). Basic Package price per province drives the
 // "Where We Serve" cards AND the province selector in the booking calculator.
-// Ontario $99, every other province $199.
+// Ontario $149, every other province $199.
 export const provinces: Province[] = [
-  { code: "ON", name: "Ontario", city: "Toronto", citySlug: "toronto", priceFrom: 99 },
+  { code: "ON", name: "Ontario", city: "Toronto", citySlug: "toronto", priceFrom: 149 },
   { code: "AB", name: "Alberta", city: "Calgary", citySlug: "calgary", priceFrom: 199 },
   { code: "QC", name: "Quebec", city: "Montreal", citySlug: "montreal", priceFrom: 199 },
   { code: "BC", name: "British Columbia", city: "Vancouver", citySlug: "vancouver", priceFrom: 199 },

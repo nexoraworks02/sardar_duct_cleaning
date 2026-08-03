@@ -13,9 +13,10 @@ const BENEFITS = [
   {
     icon: Trash2,
     title: "Removes dust buildup",
-    description: "Clears away packed dust, lint, pet hair, and debris that accumulates inside your ductwork over the years.",
+    description: "Breaks loose heavy dust layers, lint, pet hair, and debris built up inside your ductwork.",
     accent: "text-amber-400 bg-amber-500/10 border-amber-500/20",
     image: "/images/benefits/dust-buildup.jpg",
+    images: ["/images/benefits/blower-dusty.jpg", "/images/benefits/blower-clean.jpg"],
     gradient: "from-amber-500/25 to-amber-900/10",
   },
   {
@@ -37,9 +38,10 @@ const BENEFITS = [
   {
     icon: Sparkles,
     title: "Leaves ducts visibly cleaner",
-    description: "Restores metal surfaces to a sanitary state you can see, backed by visual inspections.",
+    description: "Shows the duct interior after cleaning, with clearer metal surfaces and less loose debris.",
     accent: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
     image: "/images/benefits/clean-ducts.jpg",
+    images: ["/images/benefits/duct-dusty-frame.jpg", "/images/benefits/duct-clean-frame.jpg"],
     gradient: "from-emerald-500/25 to-emerald-900/10",
   },
 ];
@@ -257,13 +259,31 @@ export function BeforeAfter() {
                   <div className={cn("absolute inset-0 flex items-center justify-center bg-gradient-to-br", benefit.gradient)}>
                     <Icon className={cn("h-10 w-10 opacity-70", benefit.accent.split(" ")[0])} />
                   </div>
+                  {benefit.images && (
+                    <div className="absolute inset-0 grid grid-cols-2 gap-[2px] bg-[#040D18]">
+                      {benefit.images.map((image, index) => (
+                        <div key={image} className="relative overflow-hidden">
+                          <img
+                            src={image}
+                            alt={`${benefit.title} ${index === 0 ? "before" : "after"} cleaning result`}
+                            loading="lazy"
+                            onError={(e) => { e.currentTarget.style.display = "none"; }}
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   {/* Hides itself gracefully if the image file isn't present yet */}
                   <img
                     src={benefit.image}
                     alt={`${benefit.title} — professional air duct cleaning result`}
                     loading="lazy"
                     onError={(e) => { e.currentTarget.style.display = "none"; }}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={cn(
+                      "absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105",
+                      benefit.images ? "hidden" : ""
+                    )}
                   />
                   <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#040D18] to-transparent" />
                 </div>
