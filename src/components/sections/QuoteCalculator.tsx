@@ -71,6 +71,15 @@ function formatTime(t: string) {
   return `${h12}:${String(m).padStart(2, "0")} ${am ? "AM" : "PM"}`;
 }
 
+function isValidPhone(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  return digits.length === 10 || (digits.length === 11 && digits.startsWith("1"));
+}
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
+}
+
 export function QuoteCalculator() {
   const [step, setStep] = useState<Step>("form");
   const [submitting, setSubmitting] = useState(false);
@@ -137,6 +146,16 @@ export function QuoteCalculator() {
 
     // Honeypot tripped → it's a bot. Abort silently: no success, no error.
     if (honeypot.current?.value) return;
+
+    if (!isValidPhone(form.phone)) {
+      setError("Please enter a valid 10-digit contact number.");
+      return;
+    }
+
+    if (!isValidEmail(form.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
 
     submittingRef.current = true;
     setSubmitting(true);
@@ -221,6 +240,9 @@ export function QuoteCalculator() {
                     required
                     suppressHydrationWarning
                     type="tel"
+                    inputMode="tel"
+                    pattern="(?:\+?1[\s.-]?)?\(?[2-9]\d{2}\)?[\s.-]?\d{3}[\s.-]?\d{4}"
+                    title="Enter a valid 10-digit phone number, for example (437) 529-2329"
                     placeholder="(437) 529-2329"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -233,6 +255,9 @@ export function QuoteCalculator() {
                       required
                       suppressHydrationWarning
                       type="email"
+                      inputMode="email"
+                      pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+                      title="Enter a valid email address, for example name@example.com"
                       placeholder="you@example.com"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
