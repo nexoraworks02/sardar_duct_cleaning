@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronRight, Menu, Phone, X } from "lucide-react";
+import { ChevronRight, Menu, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { Container } from "./ui/Container";
 import { nav, site } from "@/config/site";
@@ -43,9 +43,6 @@ export function Navbar() {
               className="group relative inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-extrabold uppercase tracking-normal text-white/90 transition-colors hover:text-white"
             >
               {item.label}
-              {item.label === "Services" && (
-                <ChevronDown className="h-4 w-4 text-[#7bb7ff]" />
-              )}
               <span className="absolute -bottom-2 left-0 h-0.5 w-0 bg-[#1E73E8] shadow-[0_0_10px_rgba(30,115,232,0.75)] transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}

@@ -9,7 +9,7 @@ export function Logo({ className }: { className?: string }) {
       <img
         src="/images/logo/navbar-emblem.png"
         alt={site.name}
-        className="h-14 w-14 shrink-0 rounded-full object-cover drop-shadow-[0_0_10px_rgba(30,115,232,0.45)] sm:h-[76px] sm:w-[76px]"
+        className="h-14 w-14 shrink-0 rounded-full object-cover sm:h-[76px] sm:w-[76px]"
       />
       <span className="flex flex-col leading-none">
         <span className="font-display text-[1.35rem] font-black uppercase tracking-[0.04em] text-white sm:text-[1.9rem]">
