@@ -30,7 +30,11 @@ type CommonProps = {
   children: React.ReactNode;
 };
 
-type ButtonAsLink = CommonProps & { href: string };
+type ButtonAsLink = CommonProps & {
+  href: string;
+  target?: string;
+  rel?: string;
+};
 type ButtonAsButton = CommonProps &
   React.ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined };
 
@@ -41,7 +45,7 @@ export function Button(props: ButtonAsLink | ButtonAsButton) {
 
   if ("href" in props && props.href) {
     return (
-      <Link href={props.href} className={classes}>
+      <Link href={props.href} className={classes} target={props.target} rel={props.rel}>
         {children}
       </Link>
     );

@@ -49,6 +49,13 @@ export const site = {
   // Until a valid key is set, the booking form shows an error on submit
   // (it never silently "succeeds").
   web3formsAccessKey: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "",
+
+  // --- Business location (Google Maps — key-free embed) ---
+  address: "1260 Caledonia Rd, North York, ON M6A 2X5, Canada",
+  mapsEmbedUrl:
+    "https://maps.google.com/maps?q=1260+Caledonia+Rd,+North+York,+ON+M6A+2X5,+Canada&t=m&z=15&output=embed",
+  mapsDirectionsUrl:
+    "https://www.google.com/maps/dir/?api=1&destination=1260+Caledonia+Rd,+North+York,+ON+M6A+2X5,+Canada",
 } as const;
 
 export type Service = {
