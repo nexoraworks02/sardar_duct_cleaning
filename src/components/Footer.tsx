@@ -130,32 +130,36 @@ export function Footer() {
             <Navigation className="h-4 w-4 text-teal-400" />
             Get Directions
           </a>
-          <ul className="mt-4 space-y-3 text-sm">
+          <ul className="mt-4 space-y-4 text-sm">
             <li className="flex items-start gap-2 text-slate-400">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />
               <span>{site.address}</span>
             </li>
             {site.phones.map((p) => (
-              <li key={p.code} className="flex items-center gap-2 text-slate-400">
-                <Phone className="h-4 w-4 text-teal-400" />
-                <span>
-                  {p.code}: {p.phone}
-                </span>
+              <li key={p.region} className="space-y-1.5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  {p.region}
+                </p>
+                <a
+                  href={`tel:${p.phone.replace(/\D/g, "")}`}
+                  className="flex items-center gap-2 text-slate-400 transition-colors hover:text-white"
+                >
+                  <Phone className="h-4 w-4 text-teal-400" />
+                  {p.phone}
+                </a>
+                <a
+                  href={`https://wa.me/${p.whatsappDigits}?text=${encodeURIComponent(
+                    "Hi Sardar Duct Cleaning, I want a free duct cleaning quote."
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-slate-400 transition-colors hover:text-white"
+                >
+                  <MessageCircle className="h-4 w-4 text-teal-400" />
+                  WhatsApp: {p.phone}
+                </a>
               </li>
             ))}
-            <li>
-              <a
-                href={`https://wa.me/${site.whatsappDigits}?text=${encodeURIComponent(
-                  "Hi Sardar Duct Cleaning, I want a free duct cleaning quote."
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-slate-400 transition-colors hover:text-white"
-              >
-                <MessageCircle className="h-4 w-4 text-teal-400" />
-                WhatsApp: {site.whatsapp}
-              </a>
-            </li>
             <li>
               <a
                 href={`mailto:${site.email}`}

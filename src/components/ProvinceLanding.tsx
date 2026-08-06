@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import type { ProvincePage } from "@/config/service-areas";
 import { cityPages, cityPath } from "@/config/cities";
-import { site, services, provinces } from "@/config/site";
+import { site, services, provinces, phoneFor } from "@/config/site";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button, onDarkSecondary } from "@/components/ui/Button";
@@ -26,7 +26,8 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
   const waUrl = `https://wa.me/${site.whatsappDigits}?text=${encodeURIComponent(
     `Hi Sardar Duct Cleaning, I want a free duct cleaning quote in ${page.name}.`
   )}`;
-  const tel = `tel:${site.defaultPhone.replace(/[^\d+]/g, "")}`;
+  const phone = phoneFor(page.code);
+  const tel = `tel:${phone.replace(/[^\d+]/g, "")}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -35,7 +36,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
     provider: {
       "@type": "HVACBusiness",
       name: site.name,
-      telephone: site.defaultPhone,
+      telephone: phone,
       email: site.email,
       url: site.url,
     },
@@ -111,7 +112,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
                 <Phone className="h-4 w-4 text-[#AEBFD6]" />
                 Or call{" "}
                 <a href={tel} className="font-semibold text-teal-700 hover:text-mint-400">
-                  {site.defaultPhone}
+                  {phone}
                 </a>
               </p>
             </Reveal>

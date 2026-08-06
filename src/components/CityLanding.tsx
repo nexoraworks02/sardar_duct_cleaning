@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import type { CityPage } from "@/config/cities";
 import { cityPages, cityPath, provinceSlugOf } from "@/config/cities";
-import { site, provinces } from "@/config/site";
+import { site, provinces, phoneFor } from "@/config/site";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button, onDarkSecondary } from "@/components/ui/Button";
@@ -33,7 +33,8 @@ export function CityLanding({ page }: { page: CityPage }) {
   const waUrl = `https://wa.me/${site.whatsappDigits}?text=${encodeURIComponent(
     `Hi Sardar Duct Cleaning, I want a free duct cleaning quote in ${page.city}.`
   )}`;
-  const tel = `tel:${site.defaultPhone.replace(/[^\d+]/g, "")}`;
+  const phone = phoneFor(page.provinceCode);
+  const tel = `tel:${phone.replace(/[^\d+]/g, "")}`;
   const provincePath = `/service-areas/${provinceSlugOf(page.provinceName)}`;
   const otherCities = cityPages.filter((c) => c.citySlug !== page.citySlug);
 
@@ -44,7 +45,7 @@ export function CityLanding({ page }: { page: CityPage }) {
     provider: {
       "@type": "HVACBusiness",
       name: site.name,
-      telephone: site.defaultPhone,
+      telephone: phone,
       email: site.email,
       url: site.url,
     },
@@ -120,7 +121,7 @@ export function CityLanding({ page }: { page: CityPage }) {
                 <Phone className="h-4 w-4 text-[#AEBFD6]" />
                 Or call{" "}
                 <a href={tel} className="font-semibold text-teal-700 hover:text-mint-400">
-                  {site.defaultPhone}
+                  {phone}
                 </a>
               </p>
             </Reveal>

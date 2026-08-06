@@ -13,10 +13,12 @@ export const site = {
   whatsappDigits: "14375292329",
   googleRating: 4.9,
   googleReviewCount: 150,
-  // Regional contact numbers (one line for all service areas).
+  // Regional contact numbers — shown together in the footer (Call + WhatsApp per region).
   phones: [
-    { region: "All service areas", code: "Call", phone: "(437) 529-2329" },
+    { region: "Ontario", phone: "(437) 529-2329", whatsappDigits: "14375292329" },
+    { region: "Alberta", phone: "(587) 317-1679", whatsappDigits: "15873171679" },
   ],
+  // Default/general number — used anywhere the visitor's province isn't known.
   defaultPhone: "(437) 529-2329",
 
   // --- Social / marketing (leave "" to hide the icon until provided) ---
@@ -110,6 +112,8 @@ export type Province = {
   city: string;
   citySlug: string;
   priceFrom: number;
+  // Province-specific contact number. Falls back to site.defaultPhone when unset.
+  phone?: string;
 };
 
 // Provinces served (6). Basic Package price per province drives the
@@ -117,12 +121,18 @@ export type Province = {
 // Ontario $149, every other province $199.
 export const provinces: Province[] = [
   { code: "ON", name: "Ontario", city: "Toronto", citySlug: "toronto", priceFrom: 149 },
-  { code: "AB", name: "Alberta", city: "Calgary", citySlug: "calgary", priceFrom: 199 },
+  { code: "AB", name: "Alberta", city: "Calgary", citySlug: "calgary", priceFrom: 199, phone: "(587) 317-1679" },
   { code: "QC", name: "Quebec", city: "Montreal", citySlug: "montreal", priceFrom: 199 },
   { code: "BC", name: "British Columbia", city: "Vancouver", citySlug: "vancouver", priceFrom: 199 },
   { code: "MB", name: "Manitoba", city: "Winnipeg", citySlug: "winnipeg", priceFrom: 199 },
   { code: "SK", name: "Saskatchewan", city: "Saskatoon", citySlug: "saskatoon", priceFrom: 199 },
 ];
+
+// Resolves the right contact number for a province, falling back to the
+// general default (Ontario) when a province has no dedicated line.
+export function phoneFor(provinceCode: string): string {
+  return provinces.find((p) => p.code === provinceCode)?.phone ?? site.defaultPhone;
+}
 
 export const nav = [
   { label: "Services", href: "/#services" },
