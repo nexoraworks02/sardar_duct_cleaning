@@ -1,7 +1,6 @@
-import { MapPin, Navigation, Phone, MessageCircle } from "lucide-react";
+import { MapPin, Phone, MessageCircle } from "lucide-react";
 import { Section, SectionHeading } from "../ui/Section";
 import { Reveal } from "../ui/Reveal";
-import { Button } from "../ui/Button";
 import { site } from "@/config/site";
 
 export function LocationMap() {
@@ -52,17 +51,6 @@ export function LocationMap() {
               </a>
             </li>
           </ul>
-
-          <Button
-            href={site.mapsDirectionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            size="lg"
-            className="mt-8 w-full sm:w-fit"
-          >
-            <Navigation className="h-4 w-4" />
-            Get Directions
-          </Button>
         </Reveal>
 
         <Reveal delay={0.08} className="min-h-[320px] overflow-hidden rounded-lg border border-slate-200 shadow-[0_16px_40px_-24px_rgba(20,40,80,0.35)]">

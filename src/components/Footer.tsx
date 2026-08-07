@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone, MessageCircle, MapPin, Navigation } from "lucide-react";
+import { Mail, Phone, MessageCircle, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { Container } from "./ui/Container";
 import { services, site } from "@/config/site";
@@ -112,7 +112,11 @@ export function Footer() {
             Contact
           </h3>
           <span className="mt-3 block h-0.5 w-8 bg-teal-500" />
-          <div className="mt-4 overflow-hidden rounded-lg border border-white/10">
+          <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-white">
+            <MapPin className="h-4 w-4 shrink-0 text-teal-400" />
+            {site.name}
+          </p>
+          <div className="mt-2 overflow-hidden rounded-lg border border-white/10">
             <iframe
               src={site.mapsEmbedUrl}
               loading="lazy"
@@ -121,15 +125,6 @@ export function Footer() {
               title={`${site.name} location map`}
             />
           </div>
-          <a
-            href={site.mapsDirectionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-white"
-          >
-            <Navigation className="h-4 w-4 text-teal-400" />
-            Get Directions
-          </a>
           <ul className="mt-4 space-y-4 text-sm">
             <li className="flex items-start gap-2 text-slate-400">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />

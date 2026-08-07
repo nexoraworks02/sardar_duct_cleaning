@@ -55,7 +55,7 @@ export const site = {
   // --- Business location (Google Maps — key-free embed) ---
   address: "1260 Caledonia Rd, North York, ON M6A 2X5, Canada",
   mapsEmbedUrl:
-    "https://maps.google.com/maps?q=1260+Caledonia+Rd,+North+York,+ON+M6A+2X5,+Canada&t=m&z=15&output=embed",
+    "https://maps.google.com/maps?q=Sardar+Duct+Cleaning,+1260+Caledonia+Rd,+North+York,+ON+M6A+2X5,+Canada&t=m&z=15&output=embed",
   mapsDirectionsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=1260+Caledonia+Rd,+North+York,+ON+M6A+2X5,+Canada",
 } as const;
