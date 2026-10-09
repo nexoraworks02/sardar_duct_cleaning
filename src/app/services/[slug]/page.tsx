@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps) {
   const detail = serviceDetails[slug];
   if (!detail) return {};
   return {
-    title: detail.metaTitle,
+    title: { absolute: detail.metaTitle },
     description: detail.metaDescription,
     alternates: { canonical: `/services/${slug}` },
     openGraph: {

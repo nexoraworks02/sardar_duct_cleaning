@@ -260,6 +260,13 @@ export function CityLanding({ page }: { page: CityPage }) {
             </Link>{" "}
             ·{" "}
             <Link
+              href={`/duct-cleaning-cost/${page.citySlug}`}
+              className="text-teal-600 transition-colors hover:text-mint-400"
+            >
+              {page.city} duct cleaning cost
+            </Link>{" "}
+            ·{" "}
+            <Link
               href="/services/air-duct-cleaning"
               className="inline-flex items-center gap-1 text-teal-600 transition-colors hover:text-mint-400"
             >

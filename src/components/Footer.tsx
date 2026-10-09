@@ -104,6 +104,22 @@ export function Footer() {
                 All service areas
               </Link>
             </li>
+            <li>
+              <Link
+                href="/duct-cleaning-cost"
+                className="text-slate-400 transition-colors hover:text-white"
+              >
+                Duct cleaning cost by city
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog"
+                className="text-slate-400 transition-colors hover:text-white"
+              >
+                Guides &amp; resources
+              </Link>
+            </li>
           </ul>
         </div>
 

@@ -3,7 +3,9 @@
 
 export const site = {
   name: "Sardar Duct Cleaning",
-  url: "https://sardarductcleaning.com",
+  // Canonical host — the apex domain 308-redirects to www, so canonicals,
+  // sitemap and schema must use www to avoid pointing Google at a redirect.
+  url: "https://www.sardarductcleaning.com",
   tagline: "Clean air. Healthy living.",
   description:
     "At Sardar Duct Cleaning, we believe the air you breathe should be as fresh and clean as the great Canadian outdoors. We provide professional air duct cleaning plus dryer vent, air conditioner, and furnace cleaning for homes and businesses across Ontario, Alberta, Quebec, Manitoba, Saskatchewan, and British Columbia. Transparent pricing, no surprises — get a free quote today.",
