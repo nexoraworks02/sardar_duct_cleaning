@@ -142,4 +142,5 @@ export const nav = [
   { label: "Service Areas", href: "/service-areas" },
   { label: "Reviews", href: "/#reviews" },
   { label: "About", href: "/#about" },
+  { label: "Guides", href: "/blog" },
 ];

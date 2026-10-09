@@ -35,7 +35,7 @@ export function Navbar() {
           <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex xl:gap-9">
+        <nav className="hidden items-center gap-4 lg:flex xl:gap-9">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -51,10 +51,12 @@ export function Navbar() {
         <div className="hidden items-center gap-4 lg:flex">
           <a
             href={tel}
+            aria-label={`Call ${site.defaultPhone}`}
             className="flex items-center gap-2 whitespace-nowrap text-base font-extrabold text-white transition-colors hover:text-[#9ec8ff]"
           >
             <Phone className="h-5 w-5 text-[#9ec8ff]" />
-            {site.defaultPhone}
+            {/* Number shows from xl up; icon-only on smaller laptops so the nav fits */}
+            <span className="hidden xl:inline">{site.defaultPhone}</span>
           </a>
           <Link
             href="/#quote"

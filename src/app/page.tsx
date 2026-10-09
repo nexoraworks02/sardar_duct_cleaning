@@ -10,6 +10,7 @@ import { QuoteCalculator } from "@/components/sections/QuoteCalculator";
 import { Reviews } from "@/components/sections/Reviews";
 import { Areas } from "@/components/sections/Areas";
 import { LocationMap } from "@/components/sections/LocationMap";
+import { Guides } from "@/components/sections/Guides";
 import { FAQ } from "@/components/sections/FAQ";
 import { faqs } from "@/config/faqs";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -44,6 +45,7 @@ export default function Home() {
       <Reviews />
       <Areas />
       <LocationMap />
+      <Guides />
       <FAQ />
       <FinalCTA />
     </main>
