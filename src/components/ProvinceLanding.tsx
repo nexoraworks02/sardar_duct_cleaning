@@ -12,7 +12,8 @@ import {
 } from "lucide-react";
 import type { ProvincePage } from "@/config/service-areas";
 import { cityPages, cityPath } from "@/config/cities";
-import { site, services, provinces, phoneFor } from "@/config/site";
+import { site, services, provinces, phoneFor, officeFor } from "@/config/site";
+import { OfficeLocation } from "@/components/OfficeLocation";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button, onDarkSecondary } from "@/components/ui/Button";
@@ -28,6 +29,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
   )}`;
   const phone = phoneFor(page.code);
   const tel = `tel:${phone.replace(/[^\d+]/g, "")}`;
+  const office = officeFor(page.code);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -39,6 +41,16 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
       telephone: phone,
       email: site.email,
       url: site.url,
+      ...(office && {
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: office.streetAddress,
+          addressLocality: office.locality,
+          addressRegion: office.region,
+          postalCode: office.postalCode,
+          addressCountry: "CA",
+        },
+      }),
     },
     areaServed: { "@type": "State", name: page.name },
     description: page.metaDescription,
@@ -232,6 +244,8 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
           )}
         </div>
       </Section>
+
+      {office && <OfficeLocation office={office} />}
 
       {/* FAQs */}
       <section className="border-t border-white/5 bg-white/[0.02] py-16">

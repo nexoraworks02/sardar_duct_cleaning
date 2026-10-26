@@ -11,7 +11,8 @@ import {
 } from "lucide-react";
 import type { CityPage } from "@/config/cities";
 import { cityPages, cityPath, provinceSlugOf } from "@/config/cities";
-import { site, provinces, phoneFor } from "@/config/site";
+import { site, provinces, phoneFor, officeFor } from "@/config/site";
+import { OfficeLocation } from "@/components/OfficeLocation";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button, onDarkSecondary } from "@/components/ui/Button";
@@ -35,6 +36,7 @@ export function CityLanding({ page }: { page: CityPage }) {
   )}`;
   const phone = phoneFor(page.provinceCode);
   const tel = `tel:${phone.replace(/[^\d+]/g, "")}`;
+  const office = officeFor(page.provinceCode);
   const provincePath = `/service-areas/${provinceSlugOf(page.provinceName)}`;
   const otherCities = cityPages.filter((c) => c.citySlug !== page.citySlug);
 
@@ -48,6 +50,16 @@ export function CityLanding({ page }: { page: CityPage }) {
       telephone: phone,
       email: site.email,
       url: site.url,
+      ...(office && {
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: office.streetAddress,
+          addressLocality: office.locality,
+          addressRegion: office.region,
+          postalCode: office.postalCode,
+          addressCountry: "CA",
+        },
+      }),
     },
     areaServed: { "@type": "City", name: `${page.city}, ${page.provinceName}` },
     description: page.metaDescription,
@@ -199,6 +211,8 @@ export function CityLanding({ page }: { page: CityPage }) {
           </Reveal>
         </Container>
       </section>
+
+      {office && <OfficeLocation office={office} />}
 
       {/* FAQs */}
       <Section>

@@ -130,6 +130,47 @@ export const provinces: Province[] = [
   { code: "SK", name: "Saskatchewan", city: "Saskatoon", citySlug: "saskatoon", priceFrom: 199 },
 ];
 
+// Physical offices. Province/city pages show the office for their province
+// (where one exists) with an address and embedded map.
+export type Office = {
+  provinceCode: string;
+  label: string;
+  streetAddress: string;
+  locality: string;
+  region: string; // province abbreviation
+  postalCode: string;
+  address: string; // full single-line address
+  mapsEmbedUrl: string;
+};
+
+export const offices: Office[] = [
+  {
+    provinceCode: "ON",
+    label: "North York, Ontario",
+    streetAddress: "1260 Caledonia Rd",
+    locality: "North York",
+    region: "ON",
+    postalCode: "M6A 2X5",
+    address: site.address,
+    mapsEmbedUrl: site.mapsEmbedUrl,
+  },
+  {
+    provinceCode: "QC",
+    label: "Montréal, Quebec",
+    streetAddress: "7558 Chem. de la Côte-de-Liesse",
+    locality: "Montréal",
+    region: "QC",
+    postalCode: "H4T 1E7",
+    address: "7558 Chem. de la Côte-de-Liesse, Montréal, QC H4T 1E7, Canada",
+    mapsEmbedUrl:
+      "https://maps.google.com/maps?q=7558+Chem.+de+la+C%C3%B4te-de-Liesse,+Montr%C3%A9al,+QC+H4T+1E7,+Canada&t=m&z=15&output=embed",
+  },
+];
+
+export function officeFor(provinceCode: string): Office | undefined {
+  return offices.find((o) => o.provinceCode === provinceCode);
+}
+
 // Resolves the right contact number for a province, falling back to the
 // general default (Ontario) when a province has no dedicated line.
 export function phoneFor(provinceCode: string): string {

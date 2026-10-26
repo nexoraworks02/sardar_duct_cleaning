@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, Phone, MessageCircle, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { Container } from "./ui/Container";
-import { services, site } from "@/config/site";
+import { services, site, offices } from "@/config/site";
 import { provincePages } from "@/config/service-areas";
 
 function FacebookIcon() {
@@ -142,10 +142,17 @@ export function Footer() {
             />
           </div>
           <ul className="mt-4 space-y-4 text-sm">
-            <li className="flex items-start gap-2 text-slate-400">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />
-              <span>{site.address}</span>
-            </li>
+            {offices.map((o) => (
+              <li key={o.provinceCode} className="space-y-1.5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  {o.label} office
+                </p>
+                <p className="flex items-start gap-2 text-slate-400">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />
+                  <span>{o.address}</span>
+                </p>
+              </li>
+            ))}
             {site.phones.map((p) => (
               <li key={p.region} className="space-y-1.5">
                 <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
